@@ -17,5 +17,8 @@
     "url": "https://github.com/vjtknn/gql-bookstore/issues"
   },
   "homepage": "https://github.com/vjtknn/gql-bookstore#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "apollo-server": "^2.10.0"
+  }
 }
