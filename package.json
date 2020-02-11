@@ -19,8 +19,11 @@
     "url": "https://github.com/vjtknn/gql-bookstore/issues"
   },
   "homepage": "https://github.com/vjtknn/gql-bookstore#readme",
-  "type": "module",
   "dependencies": {
-    "apollo-server": "^2.10.0"
+    "apollo-server": "^2.10.0",
+    "graphql": "^14.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
