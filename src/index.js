@@ -28,12 +28,21 @@ const typeDefs = gql`
 
   type Query {
     books: [Book]
+    book(id: ID): Book
   }
 `;
 
 const resolvers = {
   Query: {
-    books: () => books
+    books: () => {
+      return books;
+    },
+    // (obj, args, ctx, info)
+    book: (obj, { id }, ctx, info) => {
+      console.log("id:", id);
+      const foundBook = books.find(book => book.id === id);
+      return foundBook;
+    }
   }
 };
 
