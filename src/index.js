@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 
-const { books } = require("./data");
+const { books, authors } = require("./data");
 
 const typeDefs = gql`
   scalar Date
@@ -48,6 +48,16 @@ const resolvers = {
       return foundBook;
     }
   },
+
+  Book: {
+    author: (obj, arg, ctx, info) => {
+      const filteredAuthor = authors.find(
+        author => obj.author.id === author.id
+      );
+      return filteredAuthor;
+    }
+  },
+
   Date: new GraphQLScalarType({
     name: "Date",
     description: "date",
