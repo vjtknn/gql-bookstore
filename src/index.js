@@ -1,7 +1,11 @@
 const { ApolloServer, gql } = require("apollo-server");
+const { GraphQLScalarType } = require("graphql");
+const { Kind } = require("graphql/language");
+
 const { books } = require("./data");
 
 const typeDefs = gql`
+  scalar Date
   enum Status {
     READ
     WATCH_LIST
@@ -14,7 +18,7 @@ const typeDefs = gql`
     title: String!
     author: Author
     pages: Int
-    publishDate: String
+    publishDate: Date
     publisher: String
     status: Status
   }
@@ -23,7 +27,7 @@ const typeDefs = gql`
     id: ID!
     first_name: String!
     last_name: String!
-    dateOfBirth: String
+    dateOfBirth: Date
   }
 
   type Query {
@@ -43,7 +47,25 @@ const resolvers = {
       const foundBook = books.find(book => book.id === id);
       return foundBook;
     }
-  }
+  },
+  Date: new GraphQLScalarType({
+    name: "Date",
+    description: "date",
+    parseValue(value) {
+      // value from client
+      return new Date(value);
+    },
+    serialize(value) {
+      // value from server send to client
+      return value.getDate();
+    },
+    parseLiteral(ast) {
+      if (ast.Kind === Kind.INT) {
+        return new Date(ast.value);
+      }
+      return null;
+    }
+  })
 };
 
 const server = new ApolloServer({
