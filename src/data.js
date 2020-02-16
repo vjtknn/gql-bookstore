@@ -11,7 +11,7 @@ const authors = [
     id: "danS",
     first_name: "Dan",
     last_name: "Simmons",
-    dateOfBirth: new Date("")
+    dateOfBirth: new Date("09-21-1920")
   }
 ];
 
@@ -23,7 +23,7 @@ const books = [
       id: "isaac"
     },
     pages: 255,
-    publishDate: new Date("21-03-1951"),
+    publishDate: new Date("03/21/1951"),
     publisher: "Gnome press"
   },
   {
@@ -33,7 +33,7 @@ const books = [
       id: "isaac"
     },
     pages: 247,
-    publishDate: new Date("21-03-1952"),
+    publishDate: new Date("02-21-1952"),
     publisher: "Gnome press"
   },
   {
@@ -42,7 +42,7 @@ const books = [
     author: {
       id: "danS"
     },
-    publishDate: new Date("20-01-1989"),
+    publishDate: new Date("01-20-1989"),
     publisher: "Amber"
   }
 ];
